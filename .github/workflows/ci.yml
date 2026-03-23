@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - "1-DevOps/idempotweet/**"
-  # workflow_call:
+  workflow_call:
 jobs:
   ci:
     name: ci
