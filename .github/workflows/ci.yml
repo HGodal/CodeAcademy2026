@@ -7,7 +7,7 @@ on:
 jobs:
   ci:
     name: ci
-    runs-on: ${{ vars.RUNNER || 'self-hosted' }}
+    runs-on: ${{ vars.RUNNER }}
     defaults:
       run:
         working-directory: 1-DevOps/idempotweet
