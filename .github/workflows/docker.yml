@@ -32,6 +32,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest
             type=sha,prefix=sha-
@@ -40,5 +41,6 @@ jobs:
         with:
           context: ./1-DevOps/idempotweet
           file: ./1-DevOps/2-Docker/Dockerfile
+          push: true
           tags: ${{steps.meta.outputs.tags}}
           labels: ${{steps.meta.outputs.labels}}
