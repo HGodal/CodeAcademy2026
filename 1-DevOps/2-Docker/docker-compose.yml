@@ -1,0 +1,25 @@
+services:
+  app:
+    build:
+      context: ../../1-DevOps/idempotweet
+      dockerfile: ../2-Docker/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://codeacademy:codeacademy@postgres:5432/codeacademy
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      - POSTGRES_USER=codeacademy
+      - POSTGRES_PASSWORD=codeacademy
+      - POSTGRES_DB=codeacademy
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
